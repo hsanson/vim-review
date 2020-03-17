@@ -1,0 +1,102 @@
+*vim-review.txt*           For Vim version 8.1    Last change: 2020 March 16
+
+Author:         Horacio Sanson
+Licence:        Vim licence, see |license|
+Homepage:       https://github.com/hsanson/vim-review
+Version:        0.0.1
+
+==============================================================================
+Contents                                    *vim-review* *vim-review-contents*
+
+         1. Intro ........................... |vim-review-intro|
+         2. Installation .................... |vim-review-installation|
+         3. Usage ........................... |vim-review-usage|
+         4. Commands ........................ |vim-review-commands|
+         5. Mappings ........................ |vim-review-mappings|
+         6. Configuration ................... |vim-review-configuration|
+         7. Credits ......................... |vim-review-credits|
+
+==============================================================================
+1. Intro                                                   *vim-review-intro*
+
+This plugin adds a |Review| command that fills the quickfix window with the
+list of files changed in a git pull/merge request. This plugin depends on
+vim-fugitive for the heavy lifting.
+
+==============================================================================
+2. Installation                                      *vim-review-installation*
+
+Use your favorite plugin manager to install vim-fugitive and this plugins:
+>
+        Plug 'tpope/vim-fugitive'
+        Plug 'hsanson/vim-review'
+<
+
+==============================================================================
+3. Usage                                                    *vim-review-usage*
+
+In your local git repository checkout the pull/merge request you wish to
+review. Open vim in the root of directory of the repo and execute the
+following command:
+>
+       :Review
+<
+
+By default this command fills the quickfix window with the list of files
+that have changed relative to *g:review_base* (develop) branch.
+
+It is possible to override the base branch by passing an argument to the
+command. For example to get the list of files changed relative to a release
+branch we execute:
+>
+      :Review release
+<
+Within the Quickfix window pressing the enter key opens a diff view of the
+file using a vertical split layout at the top of the quickfix window.
+
+------------------------------------------------------------------------------
+4. Commands                                               *vim-review-commands*
+
+:Review
+    Open quickfix window with list of changed files relative to *g:review_base*.
+    It can accept a single argument to override the value of *g:review_base*.
+
+==============================================================================
+5. Mappings                                               *vim-review-mappings*
+
+The following normal mode mappings are defined:
+
+  <Plug>Review
+
+You can create your own mapping from this like:
+
+  nmap <leader>r <Plug>Review
+
+==============================================================================
+6. Configuration                                     *vim-review-configuration*
+
+                                                                *g:review_base*
+g:review_base~
+Default: develop
+
+Default git base to compare against.
+
+                                                            *g:review_use_tabs*
+g:review_use_tabs~
+Default: 1
+
+By default the quickfix window is open in a new tab. If you prefer to use the
+current tab set *g:review_use_tabs* value to 0. In this case the current tab
+window layout will be changed to contain the quickfix window at the bottom and
+a vertical diff split at the top.
+
+
+==============================================================================
+7. Credits                                                 *vim-review-credits*
+
+This plugin is based on this blog post:
+
+ - https://blog.jez.io/cli-code-review/
+
+==============================================================================
+ vim: tw=78 ts=8 sw=4 sts=4 et ft=help
