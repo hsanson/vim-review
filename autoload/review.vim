@@ -43,7 +43,7 @@ function! review#review(...)
     call add(l:list, { 'filename': l:item[2], 'lnum': 1, 'text': '+' . l:item[0] . ' -' . l:item[1] })
   endfor
 
-  call setqflist(l:list, ' ', { 'id': 'reviewqf', 'title': 'Review' , 'items': l:list})
+  call setqflist([], ' ', { 'id': 'reviewqf', 'title': 'Review' , 'items': l:list})
   copen
   setlocal switchbuf="uselast"
   nnoremap <buffer> <ENTER> :call review#file()<CR>
