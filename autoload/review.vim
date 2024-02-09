@@ -1,6 +1,15 @@
 function! s:base()
   if ! exists('g:review_base')
-    let g:review_base = 'develop'
+    let l:branches_cmd = "git branch --no-color --format '%(refname:short)'"
+    let l:branches = map(split(system(l:branches_cmd), '\n'), {pos,val -> trim(val)})
+
+    if index(l:branches, 'develop') >= 0
+      let g:review_base = 'develop'
+    elseif index(l:branches, 'main') >= 0
+      let g:review_base = 'main'
+    else
+      let g:review_base = 'master'
+    endif
   endif
 
   return g:review_base
