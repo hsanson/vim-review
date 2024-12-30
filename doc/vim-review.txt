@@ -43,7 +43,7 @@ following command:
 <
 
 By default this command fills the quickfix window with the list of files
-that have changed relative to *g:review_base* (develop) branch.
+that have changed relative to `g:review_base` (develop) branch.
 
 It is possible to override the base branch by passing an argument to the
 command. For example to get the list of files changed relative to a release
@@ -58,8 +58,8 @@ file using a vertical split layout at the top of the quickfix window.
 4. Commands                                               *vim-review-commands*
 
 :Review
-    Open quickfix window with list of changed files relative to *g:review_base*.
-    It can accept a single argument to override the value of *g:review_base*.
+    Open quickfix window with list of changed files relative to g:review_base.
+    It can accept a single argument to override the value of g:review_base.
 
 ==============================================================================
 5. Mappings                                               *vim-review-mappings*
@@ -86,7 +86,7 @@ g:review_use_tabs~
 Default: 1
 
 By default the quickfix window is open in a new tab. If you prefer to use the
-current tab set *g:review_use_tabs* value to 0. In this case the current tab
+current tab set g:review_use_tabs value to 0. In this case the current tab
 window layout will be changed to contain the quickfix window at the bottom and
 a vertical diff split at the top.
 
